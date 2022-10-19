@@ -1,0 +1,69 @@
+#include <iostream>
+#include <string>
+#define MAX 30
+using namespace std;
+
+int top = 0;
+string stk[MAX];
+
+bool isFull(){
+    if(top == MAX){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+bool isEmpty(){
+    if(top == 0){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+void push(char data){
+    if(isFull()){
+        cout<<"sudah penuh";
+    }else{
+        stk[top] = data;
+        top++;
+    }
+}
+
+void pop(){
+    if(isEmpty()){
+        cout<<"Data kosong";
+    }else{
+        stk[top]="";
+    }
+}
+
+void tampil(){
+    if(isEmpty()){
+        cout<<"Data kosong\n";
+    }else{
+        cout << "hasil konversi:";
+        for(int i = 0;i<=top;i++){
+            cout<< stk[i];
+        }
+    }
+}
+
+
+int main()
+{
+    char pesan[]= "HA***L*OAP***A*KAB*A***R";
+    int i;
+
+    int panjang = sizeof(pesan)/sizeof(char) - 1;
+
+    for(i=0;i<panjang;i++){
+        if(pesan[i] != '*'){
+            push(pesan[i]);
+        }else{
+            pop();
+        }
+    }tampil();
+    return 0;
+}
